@@ -63,8 +63,69 @@ $(document).ready(function(){
     });
 });
 
+document.querySelector("#m_next > div > a").addEventListener("click",function(){
+    document.querySelector("body > div.section.cal_box > div.svg").style.display = "none";
+    document.querySelector("body > div.section.cal_box > div:nth-child(2)").style.display = "";
+    document.querySelector("#m_next > div > a > span").innerHTML = "六月";
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = "五月";
+    document.querySelector("#m_back > div > a > span").innerHTML = "四月";
+})
 
-  
+var click_tag_SB = document.getElementById('springBreak')
+var res_date_SB = document.getElementsByClassName('BreakSpring')
+var ct_date_SB = res_date_SB.length
+var res_date_text_SB = document.getElementsByClassName('BreakSping_text')
+var res_date_text_ts_SB = document.getElementsByClassName('Spring_ts')
+var ct_ts_SB = res_date_text_ts_SB.length
+
+
+$(document).ready(function(){
+    $('#springBreak').click(function(){
+        if ($(this).css('background-color') === 'rgb(245, 171, 45)'){
+            $(this).css('background-color') === 'rgb(245, 171, 45)';
+            $(this).css('background-color', 'rgba(107, 101, 91, 0.49)');
+            $(this).css('color','white');
+            for (i = 0; i < ct_date; i++){
+                var y_1 = res_date[i];
+                var y_2 = res_date_text_ts[i];
+                 $(y_1).attr('fill', 'rgb(245, 171, 45)');
+                 $(y_1).attr('stroke', '#1A1203');
+                 $(y_2).attr('font-size','50');
+                 $(y_2).attr('fill','#FFFFFF');
+                 $(y_2).attr('stroke','#0E0900');
+                 $(y_2).attr('stroke-opacity','1');
+                 $(y_2).attr('stroke-width','1');
+
+            };
+            for (j = 0; j < ct_ts; j++) {
+                var y_3 = res_date_text_ts[j];
+                $(y_3).attr('dy','30');
+                $(y_3).attr('x','50');
+                }
+        }
+        else{
+            $(this).css('background-color', 'rgba(107, 101, 91, 0.49)');
+            $(this).css('background-color','rgb(245, 171, 45)');
+            $(this).css('color','black');
+            for (i = 0; i < ct_date; i++){
+                var y_1 = res_date[i];
+                var y_2 = res_date_text_ts[i];
+                 $(y_1).attr('fill', 'rgb(255, 255, 255)');
+                 $(y_1).attr('stroke', 'rgb(105, 105, 105)');
+                 $(y_2).attr('font-size','14.72');
+                 $(y_2).attr('fill','rgb(0, 0, 0)');
+                 $(y_2).attr('stroke','rgb(0, 0, 0)');
+                 $(y_2).attr('stroke-opacity','1');
+                 $(y_2).attr('stroke-width','0');
+            };
+            for (j = 0; j < ct_ts; j++) {
+                var y_3 = res_date_text_ts[j];
+                $(y_3).attr('dy','6');
+                $(y_3).attr('x','0');
+                }
+        }
+    });
+});
 </script>
 <!--
 <script type="text/javascript">

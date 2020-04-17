@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
-<title>Cal.utf8.md</title>
+<title>Cal.utf8</title>
 
 <!--以HTML語法寫下要放在head的內容-->
 
@@ -1191,7 +1190,7 @@ body {
 <div class="row" style="margin-top: 0px;margin-bottom: 0;">
   <div id ="m_back" class=" col s5 blue lighten-4" style="padding-top: 10px;">
     <div class="m_back">
-    <a class="right waves-effect waves-light grey-text text-darken-1" style="font-size: 15px;"><i class="tiny material-icons left grey-text text-darken-1" style="cursor: pointer;margin-right: 5px;">fast_rewind</i>三月</a>
+    <a class="right waves-effect waves-light grey-text text-darken-1" style="font-size: 15px;"><i class="tiny material-icons left grey-text text-darken-1" style="cursor: pointer;margin-right: 5px;">fast_rewind</i><span>三月</span></a>
     </div>
   </div>
   
@@ -1202,27 +1201,36 @@ body {
   
   <div id ="m_next" class="col s5 green lighten-4" style="padding-top: 10px;">
     <div class="m_next">
-    <a class="left waves-effect waves-light grey-text text-darken-1"><i class="tiny material-icons right grey-text text-darken-1" style="cursor: pointer;margin-left: 5px">fast_forward</i>五月</a>
+    <a class="left waves-effect waves-light grey-text text-darken-1"><i class="tiny material-icons right grey-text text-darken-1" style="cursor: pointer;margin-left: 5px">fast_forward</i><span>五月</span></a>
   </div>
   </div>
   </div>
-<div class="row" style="margin-top: 0px;margin-bottom: 0;">
+<div class="row" style="margin-top: 0px;margin-bottom: 0; padding:20px; ">
 <!-- Tags goes here -->
 
-<div class="col s7" style="padding: 5px;position: relative">
-        <span id="changeDep" class="tag1 waves-effect waves-light">轉系申請<span>
-      </div>
+
+  <span id="changeDep" class="tag1 waves-effect waves-light" style="margin:5px">轉系申請</span>
+  <span id="springBreak" class="tag1 waves-effect waves-light" style="margin:5px">春假</span>
+  <span id="midterm" class="tag1 waves-effect waves-light" style="margin:5px">期中考週</span>
+  <span id="quitCourse" class="tag1 waves-effect waves-light" style="margin:5px">棄修申請</span>
+  <span id="payment" class="tag1 waves-effect waves-light" style="margin:5px">加退選繳費</span>
+  <span id="graduateCer" class="tag1 waves-effect waves-light" style="margin:5px">畢業典禮</span>
+  <span id="work" class="tag1 waves-effect waves-light" style="margin:5px">補班</span>
+  <span id="final" class="tag1 waves-effect waves-light" style="margin:5px">期末考週</span>
+  <span id="dragonBreak" class="tag1 waves-effect waves-light" style="margin:5px">端午連假</span>
+  <span id="final" class="tag1 waves-effect waves-light" style="margin:5px">論文考試申請</span>
+  <span id="graduateQualFirst" class="tag1 waves-effect waves-light" style="margin:5px">畢業資格初審</span>
+  <span id="graduateQualLast" class="tag1 waves-effect waves-light" style="margin:5px">畢業資格複審</span>
+  <span id="summerCourse" class="tag1 waves-effect waves-light" style="margin:5px">
+  暑修報名</span>
+  <span id="summerVac" class="tag1 waves-effect waves-light" style="margin:5px">
+  暑假開始</span>
+  <span id="semesterEnd" class="tag1 waves-effect waves-light" style="margin:5px">
+  108-2結束</span>
+</div>
       
 <!-- Tags done -->
-<!-- Month Card goes here -->
 
-<div class="col s5 pink" style="margin-top: 5px">
-  1
-  </div>
-  
-</div>
-<!-- Month Card done -->
-</div>
 <!-- Lower Area done -->
 
 <!--以HTML語法寫下要放在body結尾的內容, 不可使用任何code chunks-->
@@ -1290,8 +1298,69 @@ $(document).ready(function(){
     });
 });
 
+document.querySelector("#m_next > div > a").addEventListener("click",function(){
+    document.querySelector("body > div.section.cal_box > div.svg").style.display = "none";
+    document.querySelector("body > div.section.cal_box > div:nth-child(2)").style.display = "";
+    document.querySelector("#m_next > div > a > span").innerHTML = "六月";
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = "五月";
+    document.querySelector("#m_back > div > a > span").innerHTML = "四月";
+})
 
-  
+var click_tag_SB = document.getElementById('springBreak')
+var res_date_SB = document.getElementsByClassName('BreakSpring')
+var ct_date_SB = res_date_SB.length
+var res_date_text_SB = document.getElementsByClassName('BreakSping_text')
+var res_date_text_ts_SB = document.getElementsByClassName('Spring_ts')
+var ct_ts_SB = res_date_text_ts_SB.length
+
+
+$(document).ready(function(){
+    $('#springBreak').click(function(){
+        if ($(this).css('background-color') === 'rgb(245, 171, 45)'){
+            $(this).css('background-color') === 'rgb(245, 171, 45)';
+            $(this).css('background-color', 'rgba(107, 101, 91, 0.49)');
+            $(this).css('color','white');
+            for (i = 0; i < ct_date; i++){
+                var y_1 = res_date[i];
+                var y_2 = res_date_text_ts[i];
+                 $(y_1).attr('fill', 'rgb(245, 171, 45)');
+                 $(y_1).attr('stroke', '#1A1203');
+                 $(y_2).attr('font-size','50');
+                 $(y_2).attr('fill','#FFFFFF');
+                 $(y_2).attr('stroke','#0E0900');
+                 $(y_2).attr('stroke-opacity','1');
+                 $(y_2).attr('stroke-width','1');
+
+            };
+            for (j = 0; j < ct_ts; j++) {
+                var y_3 = res_date_text_ts[j];
+                $(y_3).attr('dy','30');
+                $(y_3).attr('x','50');
+                }
+        }
+        else{
+            $(this).css('background-color', 'rgba(107, 101, 91, 0.49)');
+            $(this).css('background-color','rgb(245, 171, 45)');
+            $(this).css('color','black');
+            for (i = 0; i < ct_date; i++){
+                var y_1 = res_date[i];
+                var y_2 = res_date_text_ts[i];
+                 $(y_1).attr('fill', 'rgb(255, 255, 255)');
+                 $(y_1).attr('stroke', 'rgb(105, 105, 105)');
+                 $(y_2).attr('font-size','14.72');
+                 $(y_2).attr('fill','rgb(0, 0, 0)');
+                 $(y_2).attr('stroke','rgb(0, 0, 0)');
+                 $(y_2).attr('stroke-opacity','1');
+                 $(y_2).attr('stroke-width','0');
+            };
+            for (j = 0; j < ct_ts; j++) {
+                var y_3 = res_date_text_ts[j];
+                $(y_3).attr('dy','6');
+                $(y_3).attr('x','0');
+                }
+        }
+    });
+});
 </script>
 <!--
 <script type="text/javascript">
