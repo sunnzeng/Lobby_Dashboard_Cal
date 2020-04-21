@@ -24,6 +24,26 @@ params:
   cursor: pointer;
 }
 
+.tag2{
+  top: 5px;
+  padding: 5px 5px;
+  background-color: #F33A29;
+  border: 1px solid black;
+  font-size: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.tag3{
+  top: 5px;
+  padding: 5px 5px;
+  background-color: #2988F3;
+  border: 1px solid black;
+  font-size: 15px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
 .m_back > a{
   border:0.5px solid black;
   border-radius: 15px;
