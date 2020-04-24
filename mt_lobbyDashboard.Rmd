@@ -88,6 +88,10 @@ library(dplyr); library(htmltools)
   
 }
 
+.tags_scrl::-webkit-scrollbar{
+  display:none;
+}
+
 .m_next > a{
   border:0.5px solid black;
   border-radius: 15px;
