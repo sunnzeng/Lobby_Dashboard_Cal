@@ -20,7 +20,7 @@ params:
   background-color: #F5AB2D;
   border: 1px solid black;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -30,7 +30,7 @@ params:
   background-color: #F33A29;
   border: 1px solid black;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -40,7 +40,7 @@ params:
   background-color: #2988F3;
   border: 1px solid black;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
