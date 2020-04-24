@@ -849,8 +849,8 @@ $(document).ready(function(){
 });
 
 document.querySelector("#m_next > div > a").addEventListener("click",function(){
-    document.querySelector("body > div.section.cal_box > div.svg").style.display = "none";
-    document.querySelector("body > div.section.cal_box > div:nth-child(2)").style.display = "";
+    document.querySelector("#calendar > div.section.cal_box > div.svg").style.display = "none";
+    document.querySelector("#calendar > div.section.cal_box > div:nth-child(2)").style.display = "";
     document.querySelector("#m_next > div > a > span").innerHTML = "六月";
     document.querySelector("#m_now > p:nth-child(1)").innerHTML = "五月";
     document.querySelector("#m_back > div > a > span").innerHTML = "四月";
