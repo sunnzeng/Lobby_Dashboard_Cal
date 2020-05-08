@@ -848,20 +848,31 @@ $(document).ready(function(){
     });
 });
 
+var checknum_cal = 0
+var j = 1
+var cal_month = document.getElementsByClassName("svg")
+var month_tag = ["三月","四月","五月","六月","七月","八月"];
 document.querySelector("#m_next > div > a").addEventListener("click",function(){
-    document.querySelector("#calendar > div.section.cal_box > div.svg").style.display = "none";
-    document.querySelector("#calendar > div.section.cal_box > div:nth-child(2)").style.display = "";
-    document.querySelector("#m_next > div > a > span").innerHTML = "六月";
-    document.querySelector("#m_now > p:nth-child(1)").innerHTML = "五月";
-    document.querySelector("#m_back > div > a > span").innerHTML = "四月";
-})
-
+    if ((checknum_cal+1) < cal_month.length){
+    j = j + 1
+    document.querySelector("#m_next > div > a").innerHTML = month_tag[j + 1];
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = month_tag[j];
+    document.querySelector("#m_back > div > a").innerHTML = month_tag[j - 1];
+    cal_month[checknum_cal].style.display = "none";
+    checknum_cal = checknum_cal + 1;
+    cal_month[checknum_cal].style.display = "";
+    }
+    })
 document.querySelector("#m_back > div > a").addEventListener("click",function(){
-    document.querySelector("#calendar > div.section.cal_box > div.svg").style.display = "";
-    document.querySelector("#calendar > div.section.cal_box > div:nth-child(2)").style.display = "none";
-    document.querySelector("#m_next > div > a > span").innerHTML = "三月";
-    document.querySelector("#m_now > p:nth-child(1)").innerHTML = "四月";
-    document.querySelector("#m_back > div > a > span").innerHTML = "五月";
+    if (checknum_cal != 0 && checknum_cal < cal_month.length){
+    j = j - 1
+    document.querySelector("#m_next > div > a").innerHTML = month_tag[j + 1];
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = month_tag[j];
+    document.querySelector("#m_back > div > a").innerHTML = month_tag[j - 1];
+    cal_month[checknum_cal].style.display = "none";
+    checknum_cal = checknum_cal - 1;
+    cal_month[checknum_cal].style.display = "";
+    }
 })
 
 </script>
