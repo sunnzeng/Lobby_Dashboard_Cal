@@ -1,7 +1,7 @@
  
 window.onload=function(){
  
-  var ms=120000; //m-second for timeOut
+  var ms=300000; //m-second for timeOut
   
   //單位資訊按鈕
   var el1=document.getElementById('poster');

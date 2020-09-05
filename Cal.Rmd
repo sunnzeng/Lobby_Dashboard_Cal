@@ -1,4 +1,5 @@
 ---
+title: Cal_Demo
 output: 
   html_document:
     theme: null
@@ -17,8 +18,8 @@ params:
 .tag1{
   top: 5px;
   padding: 5px 5px;
-  background-color: #F5AB2D;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid #B5863F;
   font-size: 15px;
   border-radius: 20px;
   cursor: pointer;
@@ -27,8 +28,8 @@ params:
 .tag2{
   top: 5px;
   padding: 5px 5px;
-  background-color: #F33A29;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid #B5863F;
   font-size: 15px;
   border-radius: 20px;
   cursor: pointer;
@@ -37,32 +38,128 @@ params:
 .tag3{
   top: 5px;
   padding: 5px 5px;
-  background-color: #2988F3;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid #B5863F;
   font-size: 15px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+.tag1:hover{
+  background-color: #7C7C7C;
+  color: white;
+}
+
+.tag2:hover{
+  background-color: #7C7C7C;
+  color: white;
+}
+
+.tag3:hover{
+  background-color: #7C7C7C;
+  color: white;
+}
+
+td {
+    padding: 3px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
 }
 
 .m_back > a{
   border:0.5px solid black;
   border-radius: 15px;
   padding:3px 5px;
+  color: grey;
 
 }
 
-.m_now{
-  
+.m_back > a:hover{
+  background-color: #7C7C7C;
+  color: white;
 }
+
 
 .m_next > a{
   border:0.5px solid black;
   border-radius: 15px;
   padding:3px 5px;
+  color: grey;
+}
+
+.m_next > a:hover{
+  background-color: #7C7C7C;
+  color: white
 }
 
 .material-icons{
   line-height: 1.5;
+}
+
+.tags_scrl::-webkit-scrollbar{
+  display:none;
+}
+
+.card .card-content {
+  padding-left: 10px;
+  padding-top: 5px;
+  border-radius: 0 0 2px 2px;
+}
+
+.card .card-title {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.card .card-reveal {
+    padding: 10px;
+}
+
+.tutor > i{
+  line-height: 1;
+}
+
+.dialog-border-bottom {
+    border: 5px solid #888888;
+    height: 65px;
+    position: relative;
+    width: 80px;
+}
+.dialog-border-bottom:before {
+    border-color: #888888 transparent transparent; 
+    border-style: solid solid solid; 
+    border-width: 5px 5px 5px 5px; 
+    bottom: -40px;
+ 
+    /* 必須指定，才能顯示內容 */
+    content: "";
+ 
+    height: 0px;
+    left: 20px; 
+ 
+    /* 必須指定，否則會變梯形 */
+    position: absolute;
+ 
+    width: 0px;
+}
+.dialog-border-bottom:after {
+    border-color: #fff transparent transparent; 
+    border-style: solid solid solid solid; 
+    border-width: 20px; 
+    bottom: -33px;
+ 
+    /* 必須指定，才能顯示內容 */
+    content: "";
+ 
+    height: 0px;
+    left: 20px; 
+ 
+    /* 必須指定，否則會變梯形 */
+    position: absolute;
+ 
+    width: 0px;
 }
 ```
 

@@ -1,0 +1,87 @@
+---
+output: 
+  html_document:
+    theme: null
+    highlight: null
+    mathjax: null
+    self_contained: false
+    includes:
+      in_header: "external/in_header/header.html"
+      before_body: "external/before_body/before_body.html"
+      after_body: "external/after_body/after_body.html"
+params:
+  output_filename: "CampusMap.html"
+---
+```{css, echo=F, eval=T}
+#box{
+ margin: 10px;
+ padding: 10px 5px;
+}
+
+#map{
+ height: 400px;
+}
+.number::-webkit-scrollbar{
+  display:none;
+}
+.number{
+  position: relative;
+  top: 10px;
+  height: 110px;
+  overflow-y: scroll;
+  padding: 5px 0;
+}
+.one{
+  padding: 8px;
+  position: relative;
+  left: 20px;
+  font-size: 15px;
+}
+.two{
+  padding: 8px;
+  position: relative;
+  margin-top: 20px;
+  left: 20px;
+  font-size: 15px;
+}
+.name_list{
+  position: relative;
+  
+}
+
+#box > div.col.s2.white > div > span.one.grey.lighten-3.grey-text.text-darken-4.btn{
+  line-height: 18px;
+  border-radius: 50px;
+}
+#box > div.col.s2.white > div > span.two.grey.lighten-3.grey-text.text-darken-4.btn{
+  line-height: 18px;
+  border-radius: 50px;
+}
+.btn, .btn-large, .btn-small, .btn-flat{
+    line-height: 40px;
+}
+#box > div.name_list.col.s10.blue.lighten-5 > div > div > div > div > div > i{
+  line-height: 0.8;
+  display: block;
+}
+.schedule1{
+  padding-left: 17px;
+}
+.schedule2{
+  padding-left: 10px;
+}
+.schedule3{
+  padding-left: 10px;
+}
+.schedule4{
+  padding-left: 17px;
+}
+.click_l:hover{
+  cursor: pointer;
+}
+```
+
+```{r,echo=FALSE}
+htmltools::includeHTML("external/within_body/campusmap.html")
+```
+

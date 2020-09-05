@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>campusmap.utf8</title>
+
+<!--以HTML語法寫下要放在head的內容-->
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+<!--plotly.js-->
+<script src="js/plotly-latest.min.js"></script>
+
+<!--pym.js-->
+<script type="text/javascript" src="js/pym.v1.min.js"></script>
+
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+<!--中文字體，必需在所有style sheets之後以取得優先權-->
+<style>
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+</style>
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+<!--以HTML語法寫下要放在body一開頭的內容, 不可使用任何code chunks-->
+
+
+
+
+
+<style type="text/css">
+#box{
+ margin: 10px;
+ padding: 10px 5px;
+}
+
+#map{
+ height: 400px;
+}
+.number::-webkit-scrollbar{
+  display:none;
+}
+.number{
+  position: relative;
+  top: 10px;
+  height: 110px;
+  overflow-y: scroll;
+  padding: 5px 0;
+}
+.one{
+  padding: 8px;
+  position: relative;
+  left: 20px;
+  font-size: 15px;
+}
+.two{
+  padding: 8px;
+  position: relative;
+  margin-top: 20px;
+  left: 20px;
+  font-size: 15px;
+}
+.name_list{
+  position: relative;
+  
+}
+
+#box > div.col.s2.white > div > span.one.grey.lighten-3.grey-text.text-darken-4.btn{
+  line-height: 18px;
+  border-radius: 50px;
+}
+#box > div.col.s2.white > div > span.two.grey.lighten-3.grey-text.text-darken-4.btn{
+  line-height: 18px;
+  border-radius: 50px;
+}
+.btn, .btn-large, .btn-small, .btn-flat{
+    line-height: 40px;
+}
+#box > div.name_list.col.s10.blue.lighten-5 > div > div > div > div > div > i{
+  line-height: 0.8;
+  display: block;
+}
+.schedule1{
+  padding-left: 17px;
+}
+.schedule2{
+  padding-left: 10px;
+}
+.schedule3{
+  padding-left: 10px;
+}
+.schedule4{
+  padding-left: 17px;
+}
+.click_l:hover{
+  cursor: pointer;
+}
+</style>
+<div style="width:50%">
+<div id="box" class="row white ">
+      <div id="map" class="col s12 white">
+        <div>
+        <img src="assets/1F_M.png" width="100%">
+        </div>
+        <div style="display: none ;">
+        <img src="assets/2F_M.png" width="100%">
+        </div>
+      </div>
+      <div id="box" class="row white ">
+          <div class="col s2 white">
+            <div class="number white tooltipped" data-position="top" data-tooltip="往下滑動">
+              <span class="one grey lighten-3 grey-text text-darken-4 btn ">1F</span><br/>
+              <span class="two grey lighten-3 grey-text text-darken-4 btn ">2F</span><br/>
+              <span class="two grey lighten-3 grey-text text-darken-4 btn ">3F</span><br/>
+              <span class="two grey lighten-3 grey-text text-darken-4 btn ">4F</span><br/>
+              <span class="two grey lighten-3 grey-text text-darken-4 btn ">5F</span><br/>
+              <span class="two grey lighten-3 grey-text text-darken-4 btn ">6F</span><br/>
+          <span class="two grey lighten-3 grey-text text-darken-4 btn ">7F</span><br/>
+          <span class="two grey lighten-3 grey-text text-darken-4 btn ">8F</span><br/>
+          </div>
+          </div>
+          <div class="name_list col s10">
+            <div class="name_tb">
+            <div class="row">
+    <div class="col s3">
+      <div class="white tooltipped" data-position="bottom" data-tooltip="點擊查詢">
+        <div class="click_l" style="margin:0px 0px"><i class="large material-icons">view_list</i></div>
+        <span class="schedule1 click_l">教室課表</span>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="white tooltipped" data-position="top" data-tooltip="點擊查詢">
+        <div class="click_l" style="margin:0px 0px"><i class="large material-icons">face</i></div>
+        <span class="schedule2 click_l">教師研究室</span>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="white tooltipped" data-position="bottom" data-tooltip="點擊查詢">
+        <div class="click_l" style="margin:0px 0px"><i class="large material-icons">forum</i></div>
+        <span class="schedule3 click_l">學系辦公室</span>
+      </div>
+    </div>
+    <div class="col s3">
+      <div class="white tooltipped" data-position="top" data-tooltip="點擊查詢">
+        <div class="click_l" style="margin:0px 0px"><i class="large material-icons">menu</i></div>
+        <span class="schedule4 click_l">其他區域</span>
+      </div>
+    </div>
+  </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!--以HTML語法寫下要放在body結尾的內容, 不可使用任何code chunks-->
+<!--以HTML語法寫下要放在before body的內容-->
+<!--JavaScript at end of body for optimized loading-->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/scale-in-out.js"></script>
+
+<script type="text/javascript">
+
+
+var checknum_cal = 0
+var c = 1
+var cal_month = document.getElementsByClassName("svg")
+var month_tag = ["三月","四月","五月","六月","七月","八月"];
+document.querySelector("#m_next > div > a").addEventListener("click",function(){
+    if ((checknum_cal+1) < cal_month.length){
+    c = c + 1
+    document.querySelector("#m_next > div > a").innerHTML = month_tag[c + 1];
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = month_tag[c];
+    document.querySelector("#m_back > div > a").innerHTML = month_tag[c - 1];
+    cal_month[checknum_cal].style.display = "none";
+    checknum_cal = checknum_cal + 1;
+    cal_month[checknum_cal].style.display = "";
+    }
+    })
+document.querySelector("#m_back > div > a").addEventListener("click",function(){
+    if (checknum_cal != 0 && checknum_cal < cal_month.length){
+    c = c - 1
+    document.querySelector("#m_next > div > a").innerHTML = month_tag[c + 1];
+    document.querySelector("#m_now > p:nth-child(1)").innerHTML = month_tag[c];
+    document.querySelector("#m_back > div > a").innerHTML = month_tag[c - 1];
+    cal_month[checknum_cal].style.display = "none";
+    checknum_cal = checknum_cal - 1;
+    cal_month[checknum_cal].style.display = "";
+    }
+})
+  
+</script>
+<script type="text/javascript">
+var sec_f = document.querySelector("#box > div.col.s2.white > div > span:nth-child(3)")
+var fir_f = document.querySelector("#box > div.col.s2.white > div > span.one.grey.lighten-3.grey-text.text-darken-4.btn")
+var fir_f_m = document.querySelector("#map > div:nth-child(1) > img")
+var sec_f_m = document.querySelector("#map > div:nth-child(2)")
+var fnum = 0
+$(document).ready(function(){
+  $(sec_f).click(function(){
+      $(fir_f_m).css("display","none");
+      $(sec_f_m).css("display","block");
+      });
+      $(fir_f).click(function(){
+          $(fir_f_m).css("display","block");
+          $(sec_f_m).css("display","none"); 
+      });
+      });
+
+$(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+</script>
+<!--
+<script type="text/javascript">
+window.onload=function(){
+  var jsonData=document.getElementById('myJson').innerHTML;
+  jsonData=JSON.parse(jsonData); //JSON轉成JS object
+  var graphDiv = document.getElementById('myPlot');
+  var data=jsonData["data"],
+      layout=jsonData["layout"],
+      config=jsonData["config"];
+  
+  Plotly.newPlot(graphDiv, data, layout, config);  
+}
+</script>
+-->
+
+
+<!-- code folding -->
+
+
+
+</body>
+</html>
