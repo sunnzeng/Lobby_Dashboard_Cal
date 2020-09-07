@@ -8,17 +8,57 @@ output: html_document
 ```{r}
 library(dplyr)
 library(ggcal)
+library(knitr)
+library(lubridate)
 ```
 
 ```{r}
+#取出事件、開始時間、結束時間
 data.frame(ntpuEvents[["items"]][["summary"]],ntpuEvents[["items"]][["start"]][["date"]],ntpuEvents[["items"]][["end"]][["date"]])-> ntpuEvents_time
 ```
 
 ```{r}
+#變更名稱
 colnames(ntpuEvents_time)<-c("Events","Start","End")
 ntpuEvents_time
+
+#按時間遞增排序
+ntpuEvents_time%>%
+  arrange(Start)-> ntpuEvents_time
+ntpuEvents_time
+
+#改變屬性
+ymd(ntpuEvents_time$Start)->ntpuEvents_time$Start
+ymd(ntpuEvents_time$End)->ntpuEvents_time$End
+
+#分出各類事件
+grep("考",ntpuEvents_time$Events)->row_test
+grep("選課",ntpuEvents_time$Events)->row_class
+grep("新生",ntpuEvents_time$Events)->row_fresh
+grep("假",ntpuEvents_time$Events)->row_holiday
+
+#選出各類事件
+ntpuEvents_time[c(row_test),]->ntpuEvents_time_test
+ntpuEvents_time[c(row_class),]->ntpuEvents_time_class
+ntpuEvents_time[c(row_fresh),]->ntpuEvents_time_fresh
+ntpuEvents_time[c(row_holiday),]->ntpuEvents_time_holiday
+
+ntpuEvents_time_test%>%
+  mutate(
+    Category="考試"
+  )->ntpuEvents_time_test
+
 ```
 
 
+```{r}
+library(ggplot2)
+library(ggcal)
+
+mydate <- seq(as.Date("2020-08-01"), as.Date("2021-08-31"), by="1 day")
+myfill_test <- ntpuEvents_time_test$Start
+
+print(ggcal(ntpuEvents_time_test$Start, ntpuEvents_time_test$Category))
+```
 
 
