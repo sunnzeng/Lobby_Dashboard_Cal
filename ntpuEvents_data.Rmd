@@ -1,0 +1,24 @@
+---
+title: "Untitled"
+author: "Sunny"
+date: "2020/9/5"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(ggcal)
+```
+
+```{r}
+data.frame(ntpuEvents[["items"]][["summary"]],ntpuEvents[["items"]][["start"]][["date"]],ntpuEvents[["items"]][["end"]][["date"]])-> ntpuEvents_time
+```
+
+```{r}
+colnames(ntpuEvents_time)<-c("Events","Start","End")
+ntpuEvents_time
+```
+
+
+
+
