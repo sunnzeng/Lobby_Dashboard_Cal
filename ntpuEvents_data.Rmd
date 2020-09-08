@@ -62,3 +62,63 @@ print(ggcal(ntpuEvents_time_test$Start, ntpuEvents_time_test$Category))
 ```
 
 
+```{r}
+devtools::install_github("gadenbuie/ggweekly")
+
+# create a calendar for April, May and June
+library(ggweekly)
+ggweek_planner(
+  start_day = "2020-08-01", 
+  end_day = "2020-08-31", 
+)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(forcats)
+library(ggplot2)
+library(lubridate)
+```
+
+```{r}
+#每周從星期一開始
+options("lubridate.week.start" = 1)
+```
+
+```{r}
+start_day <- floor_date(ymd("2019-06-24"), "week")
+end_day   <- ymd("2019-08-16")
+seq_days  <- seq(start_day, end_day, by = "day")
+
+seq_days[1:5]
+```
+
+```{r}
+dates <-
+  tibble(
+    day       = seq_days,
+    wday_name = wday(day, label = TRUE, abbr = TRUE), #找出星期幾 1是週一 7是週日
+    weekend   = wday(day) > 5,
+    isoweek   = isoweek(day),
+    month     = month(day, label = TRUE, abbr = FALSE),
+    isoyear   = isoyear(day),
+    week_year = fct_rev(sprintf("%s - %s", isoyear, isoweek)) 
+  )
+#fct_rev使week_year成為factor並反轉factor順序，使Y軸往下可以由小到大
+dates
+```
+
+```{r}
+dates %>% pull(week_year) %>% levels() %>% tail()
+```
+
+```{r}
+day_one <- dates %>% 
+  filter(day(day) == 1)
+
+day_one
+```
+
