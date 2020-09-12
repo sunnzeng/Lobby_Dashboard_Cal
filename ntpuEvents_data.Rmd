@@ -121,4 +121,113 @@ day_one <- dates %>%
 
 day_one
 ```
+```{r}
+week_start_labels <- dates %>%
+  filter(wday_name == "Mon") %>% 
+  arrange(day) %>%
+  mutate(
+    month = month(day, label = TRUE), 
+    label = case_when(
+      month == lag(month) ~ paste(day(day)),
+      TRUE ~ sprintf("%s %4i", month, day(day))
+    )
+  ) %>% 
+  select(label, week_year) %>% 
+  reduce(setNames)
+```
+
+```{r}
+highlight_days <- tribble(
+         ~ day,            ~ label,   ~ color,    ~ fill,
+  "2019-07-02", "Project Kick Off", "#02307a", "#02307a",
+  "2019-07-04",         "July 4th", "#b4436c", "#b4436c",
+  "2019-07-12",          "LOI Due", "#02307a", "#02307a",
+  "2019-07-26",      "First Draft", "#02307a", "#02307a",
+  "2019-08-05",        "Work week", "#02307a", "#02307a",
+  "2019-08-06",                 "",        NA, "#02307a",
+  "2019-08-07",                 "",        NA, "#02307a",
+  "2019-08-08",                 "",        NA, "#02307a",
+  "2019-08-09",                 "",        NA, "#02307a",
+  "2019-08-16", "Final Submission", "#02307a", "#02307a"
+) %>% 
+  mutate_at(vars(day), ymd)
+```
+
+```{r}
+gcal <-
+  dates %>% 
+  mutate(
+    # Softly fill in the weekend days
+    weekend = case_when(weekend ~ "#f8f8f8", TRUE ~ "#FFFFFF")
+  ) %>% 
+  ggplot() +
+  aes(wday_name, week_year) +
+  # the calendar grid
+  geom_tile(aes(fill = weekend), color = "#aaaaaa") +
+  # highlight first day of each month
+  geom_tile(
+    data = day_one,
+    fill = "#f78154",
+    alpha = 0.25
+  ) +
+  # add name of month to the first day
+  geom_text(
+    data = day_one, 
+    aes(label = month),
+    family = "PT Sans Narrow",
+    color = "#f78154",
+    size = 4,
+    # push text to the top left corner
+    hjust = 0,
+    nudge_x = -0.45,
+    vjust = 1,
+    nudge_y = 0.45
+  ) +
+  # highlight project-specific days
+  geom_tile(
+    data = dates %>% inner_join(highlight_days, by = "day"),
+    aes(fill = fill),
+    alpha = 0.25
+  ) +
+  # add the label from the highlighted days
+  geom_text(
+    data = dates %>% inner_join(highlight_days, by = "day"),
+    aes(label = label, color = color),
+    family = "PT Sans Narrow",
+    size = 2,
+    # push to bottom left corner
+    hjust = 0,
+    nudge_x = -0.45,
+    vjust = 0,
+    nudge_y = -0.40
+  ) +
+  scale_x_discrete(position = "top") +
+  scale_y_discrete(labels = week_start_labels) +
+  scale_fill_identity() +
+  scale_color_identity() +
+  guides(fill = FALSE) +
+  theme_minimal(base_family = "PT Sans") +
+  theme(
+    axis.text = element_text("PT Sans Narrow"),
+    axis.title = element_blank(),
+    panel.grid = element_blank(),
+    axis.text.x.top = element_text(face = "bold"),
+    axis.title.x.top = element_blank(),
+  )
+
+gcal
+```
+
+```{r}
+ggweek_planner(
+  start_day = "2020-08-01", 
+  end_day = "2020-12-31", 
+  show_month_boundaries = FALSE, 
+  show_month_start_day = FALSE,
+  week_start = "isoweek",
+  week_start_label = "week"
+) + 
+  ggplot2::ggtitle("2020") +
+  ggplot2::facet_wrap(~ month, scales = 'free')
+```
 
