@@ -25,6 +25,7 @@ ntpuEvents_time
 #按時間遞增排序
 ntpuEvents_time%>%
   arrange(Start)-> ntpuEvents_time
+
 ntpuEvents_time
 
 #改變屬性
@@ -48,6 +49,24 @@ ntpuEvents_time_test%>%
     Category="考試"
   )->ntpuEvents_time_test
 
+ntpuEvents_time_class%>%
+  mutate(
+    Category="選課"
+  )->ntpuEvents_time_class
+
+ntpuEvents_time_fresh%>%
+  mutate(
+    Category="新生"
+  )->ntpuEvents_time_fresh
+
+ntpuEvents_time_holiday%>%
+  mutate(
+    Category="放假"
+  )->ntpuEvents_time_holiday
+
+rbind(ntpuEvents_time_test,ntpuEvents_time_class,ntpuEvents_time_fresh,ntpuEvents_time_holiday)->ntpuEvents_time_new
+
+ntpuEvents_time_new
 ```
 
 
@@ -58,7 +77,7 @@ library(ggcal)
 mydate <- seq(as.Date("2020-08-01"), as.Date("2021-08-31"), by="1 day")
 myfill_test <- ntpuEvents_time_test$Start
 
-print(ggcal(ntpuEvents_time_test$Start, ntpuEvents_time_test$Category))
+print(ggcal(ntpuEvents_time_new$Start, ntpuEvents_time_new$Category))
 ```
 
 
